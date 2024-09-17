@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked area chart for BMI categories (Underweight, Healthy, Overweight/Obese) across regions (2000-2016).",
+  "data": {
+    "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Rounded_Men_Weight_Data_by_Region__2000-2016_.csv"
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal", 
+      "title": "Year"
+    },
+    "y": {
+      "field": "Proportion",
+      "type": "quantitative",
+      "title": "Proportion (%)",
+      "stack": "normalize"
+    },
+    "color": {
+      "field": "BMI Category",
+      "type": "nominal",
+      "title": "BMI Category",
+      "scale": {
+        "scheme": "category10"
+      }
+    },
+    "facet": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "Region",
+      "columns": 2
+    },
+    "tooltip": [
+      {"field": "Region", "type": "nominal", "title": "Region"},
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "BMI Category", "type": "nominal", "title": "BMI Category"},
+      {"field": "Proportion", "type": "quantitative", "title": "Proportion (%)"}
+    ]
+  },
+  "width": 600,
+  "height": 300
+}
