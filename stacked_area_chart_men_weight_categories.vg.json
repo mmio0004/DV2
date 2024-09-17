@@ -1,18 +1,28 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stacked area chart for BMI categories (Underweight, Healthy, Overweight/Obese) across regions (2000-2016).",
+  "description": "Stacked area chart for BMI categories (Underweight, Healthy, Overweight/Obese) across regions and World (2010-2014).",
   "data": {
-    "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Rounded_Men_Weight_Data_by_Region__2000-2016_.csv"
+    "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Rounded_Merged_World_Men_Weight_Data.csv"
   },
+  "transform": [
+    {
+      "fold": [
+        "Healthy (NCDRisC (2017))",
+        "Overweight or Obese (NCDRisC (2017))",
+        "Underweight (NCDRisC (2017))"
+      ],
+      "as": ["BMI Category", "value"]
+    }
+  ],
   "mark": "area",
   "encoding": {
     "x": {
       "field": "Year",
-      "type": "ordinal", 
+      "type": "ordinal",
       "title": "Year"
     },
     "y": {
-      "field": "Proportion",
+      "field": "value",
       "type": "quantitative",
       "title": "Proportion (%)",
       "stack": "normalize"
@@ -35,7 +45,7 @@
       {"field": "Region", "type": "nominal", "title": "Region"},
       {"field": "Year", "type": "ordinal", "title": "Year"},
       {"field": "BMI Category", "type": "nominal", "title": "BMI Category"},
-      {"field": "Proportion", "type": "quantitative", "title": "Proportion (%)"}
+      {"field": "value", "type": "quantitative", "title": "Proportion (%)"}
     ]
   },
   "width": 600,
