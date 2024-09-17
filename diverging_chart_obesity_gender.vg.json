@@ -10,7 +10,20 @@
     "hconcat": [
       {
         "transform": [{"filter": {"field": "gender", "equal": "Female"}}],
-        "mark": "bar",
+        "params": [
+          {
+            "name": "highlight",
+            "select": {"type": "point", "on": "mouseover"}
+          },
+          {
+            "name": "select",
+            "select": "point"
+          }
+        ],
+        "mark": {
+          "type": "bar",
+          "stroke": "lightgray"
+        },
         "title": {
           "text": "Female",
           "align": "center",
@@ -34,6 +47,17 @@
             "value": "#ff7f0e",
             "legend": null
           },
+          "fillOpacity": {
+            "condition": {"param": "select", "value": 1},
+            "value": 0.3
+          },
+          "strokeWidth": {
+            "condition": [
+              {"param": "select", "empty": false, "value": 3},
+              {"param": "highlight", "empty": false, "value": 2}
+            ],
+            "value": 0
+          },
           "tooltip": [
             {"field": "gender", "type": "nominal", "title": "Gender"},
             {"field": "Year", "type": "ordinal", "title": "Year"},
@@ -50,7 +74,20 @@
       },
       {
         "transform": [{"filter": {"field": "gender", "equal": "Male"}}],
-        "mark": "bar",
+        "params": [
+          {
+            "name": "highlight",
+            "select": {"type": "point", "on": "mouseover"}
+          },
+          {
+            "name": "select",
+            "select": "point"
+          }
+        ],
+        "mark": {
+          "type": "bar",
+          "stroke": "lightgray"
+        },
         "title": {
           "text": "Male",
           "align": "center",
@@ -73,6 +110,17 @@
           "color": {
             "value": "#9467bd",
             "legend": null
+          },
+          "fillOpacity": {
+            "condition": {"param": "select", "value": 1},
+            "value": 0.3
+          },
+          "strokeWidth": {
+            "condition": [
+              {"param": "select", "empty": false, "value": 3},
+              {"param": "highlight", "empty": false, "value": 2}
+            ],
+            "value": 0
           },
           "tooltip": [
             {"field": "gender", "type": "nominal", "title": "Gender"},
