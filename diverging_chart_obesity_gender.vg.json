@@ -1,15 +1,32 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
-      "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Rounded_Obesity_Rate_by_Year_and_Gender__2000-2016_.csv"
+      "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Transformed_Obesity_Dataset_with_Regions.csv"
     },
+    "params": [
+      {
+        "name": "SelectedRegion",
+        "value": "All Regions",
+        "bind": {
+          "input": "select",
+          "options": [
+            "All Regions", "Africa", "Caribbean", "Central America", "Central Asia", 
+            "Eastern Asia", "Europe", "Northern America", "Oceania", "South America", 
+            "South-eastern Asia", "Southern Asia", "Western Asia"
+          ],
+          "name": "Select Region: "
+        }
+      }
+    ],
     "transform": [
-      {"calculate": "datum.Gender == 'Female' ? 'Female' : 'Male'", "as": "gender"}
+      {
+        "filter": "SelectedRegion == 'All Regions' ? datum.Region == 'All Countries' : datum.Region == SelectedRegion"
+      }
     ],
     "spacing": 10,
     "hconcat": [
       {
-        "transform": [{"filter": {"field": "gender", "equal": "Female"}}],
+        "transform": [{"filter": {"field": "Gender", "equal": "Female"}}],
         "params": [
           {
             "name": "highlight",
@@ -40,7 +57,7 @@
             "field": "Obesity_Rate",
             "type": "quantitative",
             "title": "Obesity Prevalence Rate (%)",
-            "scale": {"domain": [0, 25], "reverse": true},
+            "scale": {"reverse": true},
             "axis": {"format": "s"}
           },
           "color": {
@@ -59,7 +76,7 @@
             "value": 0
           },
           "tooltip": [
-            {"field": "gender", "type": "nominal", "title": "Gender"},
+            {"field": "Gender", "type": "nominal", "title": "Gender"},
             {"field": "Year", "type": "ordinal", "title": "Year"},
             {"field": "Obesity_Rate", "type": "quantitative", "title": "Obesity Prevalence Rate (%)"}
           ]
@@ -73,7 +90,7 @@
         }
       },
       {
-        "transform": [{"filter": {"field": "gender", "equal": "Male"}}],
+        "transform": [{"filter": {"field": "Gender", "equal": "Male"}}],
         "params": [
           {
             "name": "highlight",
@@ -104,7 +121,7 @@
             "field": "Obesity_Rate",
             "type": "quantitative",
             "title": "Obesity Prevalence Rate (%)",
-            "scale": {"domain": [0, 25]},
+            "scale": {},
             "axis": {"format": "s"}
           },
           "color": {
@@ -123,7 +140,7 @@
             "value": 0
           },
           "tooltip": [
-            {"field": "gender", "type": "nominal", "title": "Gender"},
+            {"field": "Gender", "type": "nominal", "title": "Gender"},
             {"field": "Year", "type": "ordinal", "title": "Year"},
             {"field": "Obesity_Rate", "type": "quantitative", "title": "Obesity Prevalence Rate (%)"}
           ]
@@ -134,4 +151,4 @@
       "view": {"stroke": null},
       "axis": {"grid": false}
     }
-  }  
+}

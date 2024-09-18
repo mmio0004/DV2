@@ -7,11 +7,12 @@
     "params": [
       {
         "name": "SelectedRegion",
-        "value": "All Countries",
+        "value": "All Regions",
         "bind": {
           "input": "select",
           "options": [
-            "All Countries", "Africa", "Caribbean", "Central America", "Central Asia", 
+            "All Regions",
+            "Africa", "Caribbean", "Central America", "Central Asia", 
             "Eastern Asia", "Europe", "Northern America", "Oceania", "South America", 
             "South-eastern Asia", "Southern Asia", "Western Asia"
           ],
@@ -21,7 +22,7 @@
     ],
     "transform": [
       {
-        "filter": "SelectedRegion == 'All Countries' ? true : datum.Region == SelectedRegion"
+        "filter": "SelectedRegion == 'All Regions' ? true : datum.Region == SelectedRegion"
       },
       {
         "aggregate": [
@@ -76,7 +77,7 @@
       "y": {
         "field": "value",
         "type": "quantitative",
-        "title": "Proportion of Females (%)",
+        "title": "Proportion of Males (%)",
         "stack": "normalize"
       },
       "color": {
@@ -105,9 +106,9 @@
       "tooltip": [
         {"field": "Year", "type": "ordinal", "title": "Year"},
         {"field": "BMI Category", "type": "nominal", "title": "Body Mass Index (BMI) Category"},
-        {"field": "value", "type": "quantitative", "title": "Proportion of Females (%)", "format": ".1f"}
+        {"field": "value", "type": "quantitative", "title": "Proportion of Males (%)", "format": ".1f"}
       ]
     },
     "width": 600,
     "height": 300
-  }
+  }  

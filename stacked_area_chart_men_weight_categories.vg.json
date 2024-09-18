@@ -7,11 +7,12 @@
   "params": [
     {
       "name": "SelectedRegion",
-      "value": "All Countries",
+      "value": "All Regions",
       "bind": {
         "input": "select",
         "options": [
-          "All Countries", "Africa", "Caribbean", "Central America", "Central Asia", 
+          "All Regions",
+          "Africa", "Caribbean", "Central America", "Central Asia", 
           "Eastern Asia", "Europe", "Northern America", "Oceania", "South America", 
           "South-eastern Asia", "Southern Asia", "Western Asia"
         ],
@@ -21,7 +22,7 @@
   ],
   "transform": [
     {
-      "filter": "SelectedRegion == 'All Countries' ? true : datum.Region == SelectedRegion"
+      "filter": "SelectedRegion == 'All Regions' ? true : datum.Region == SelectedRegion" 
     },
     {
       "aggregate": [
