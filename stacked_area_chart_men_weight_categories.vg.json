@@ -11,9 +11,9 @@
       "bind": {
         "input": "select",
         "options": [
-          "All Countries", "Africa", "Northern America", "Central America", "Caribbean", 
-          "South America", "Central Asia", "Eastern Asia", "South-eastern Asia", 
-          "Southern Asia", "Western Asia", "Europe"
+          "All Countries", "Africa", "Caribbean", "Central America", "Central Asia", 
+          "Eastern Asia", "Europe", "Northern America", "Oceania", "South America", 
+          "South-eastern Asia", "Southern Asia", "Western Asia"
         ],
         "name": "Select Region: "
       }
