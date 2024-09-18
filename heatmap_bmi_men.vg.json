@@ -1,0 +1,48 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Heatmap showing Mean BMI for Males across regions and years.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/mmio0004/DV2/main/data/Cleaned_Transformed_Dataset_BMI_men.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.Region != 'All Countries'"
+      }
+    ],
+    "mark": "rect",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "Region",
+        "type": "nominal",
+        "title": "Region"
+      },
+      "color": {
+        "field": "Mean BMI (male)",
+        "type": "quantitative",
+        "scale": {
+          "scheme": "purples"
+        },
+        "title": "Mean BMI (Male)"
+      },
+      "tooltip": [
+        {"field": "Region", "title": "Region"},
+        {"field": "Year", "title": "Year"},
+        {
+          "field": "Mean BMI (male)",
+          "title": "Mean BMI (Male)",
+          "format": ".1f"
+        }
+      ]
+    },
+    "config": {
+      "axis": {
+        "labelFontSize": 12,
+        "titleFontSize": 14
+      }
+    }
+  }  
